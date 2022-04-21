@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <form [formGroup]="searchForm" class="col s12">
+      <div class="row">
+        <div class="input-field col s6">
+          <input formControlName="search" id="name" type="text" class="validate">
+          <label for="name">Input city name</label>
+        </div>
+        <div class="input-field col s6">
+          <button (click)="getWeather()" class="btn waves-effect waves-light" type="submit" name="action">
+            Get Weather!
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div *ngIf="weatherData" class="col s12 m7">
+    <h2 class="header">{{weatherData.name}}</h2>
+    <div class="card horizontal">
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>Temperature: {{weatherData.main.temp | number:'1.0-0'}}<sup>o</sup>C</p>
+          <p>Sunrise: {{weatherData.sys.sunrise * 1000 | date:'short'}}</p>
+          <p>Sunset: {{weatherData.sys.sunset * 1000 | date:'short'}}</p>
+          <p>Humidity: {{weatherData.main.humidity}}%</p>
+          <p>Wind: {{weatherData.wind.speed}} ms</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
